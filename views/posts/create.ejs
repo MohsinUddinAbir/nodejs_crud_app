@@ -1,0 +1,28 @@
+<div class="container mt-5">
+   <div class="row">
+      <h2 class="mb-5"><%= title %> </h2>
+      <div class="card p-3 mb-3">
+         <form action="/posts_store/?_csrf=<%=csrfToken%>" method="post" enctype="multipart/form-data">
+
+            <div class="form-group mb-2">
+               <label for="title">Title</label>
+               <input type="text" class="form-control" id="title" name="title" value='' />
+            </div>
+
+            <div class="form-group mb-2">
+               <label for="body">Body</label>
+               <textarea class="form-control" id="body" name="body" rows="5"></textarea>
+            </div>
+
+            <div class="form-group mb-2">
+               <label for="image">Image</label>
+               <input type="file" class="form-control" id="image" name="image" accept="image/*">
+            </div>
+
+            <!-- <input type="hidden" name="_csrf" value="<%# csrfToken %>"> -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+         <br>
+      </div>
+   </div>
+</div>

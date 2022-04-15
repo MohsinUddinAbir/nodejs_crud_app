@@ -1,0 +1,81 @@
+<div class="container mt-5">
+   <div class="row">
+      <div class="card mb-3">
+         <div class="row">
+            <% if (tuser.image) { %>
+            <div class="col-sm-3 col-4 my-3">
+               <img class="card-img-top" style="width:100px;height:100px;object-fit:contain;"
+                  src="/img/avatar/<%= tuser.image %>" alt="<%= tuser.username %>">
+            </div>
+            <% } else { %>
+            <div class="col-sm-3 col-4 my-3">
+               <img class="card-img-top" style="width:100px;height:100px;object-fit:contain;"
+                  src="/img/avatar/default.png" alt="<%= tuser.username %>">
+            </div>
+            <% } %>
+            <div class="card-body col-9">
+               <h2 class="card-title my-3"><%= tuser.username %></h2>
+               <p class="card-text"><%= tuser.about %></p>
+               <% if (tuser.id == user.id) { %>
+               <p>
+                  <span><a href="/profile/<%= tuser.username %>/edit">Edit profile</a></span>
+               </p>
+               <% } else { %>
+               <p>
+                  <span><a href="#" onclick="addFriend(event)">Add friend</a></span>
+               <form id="add_form" action="/add_friend/<%= tuser.username %>" method="post">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+               </form>
+               </p>
+               <% } %>
+            </div>
+         </div>
+      </div>
+      <% if (tuser.id == user.id) { %>
+      <div>
+         <h3>Friends</h3>
+      </div>
+      <div class="card mb-3">
+         <% if(tuser.friend.length > 0) { %>
+         <% tuser.friend.forEach(friend=> { %>
+         <div class="row mb-2">
+            <% if (friend.image) { %>
+            <div class="col-sm-3 col-4 my-3">
+               <img class="card-img-top" style="width:100px;height:100px;object-fit:contain;"
+                  src="/img/avatar/<%= friend.image %>" alt="<%= friend.username %>">
+            </div>
+            <% } else { %>
+            <div class="col-sm-3 col-4 my-3">
+               <img class="card-img-top" style="width:100px;height:100px;object-fit:contain;"
+                  src="/img/avatar/default.png" alt="<%= friend.username %>">
+            </div>
+            <% } %>
+            <div class="card-body col-9">
+               <h2 class="card-title my-3"><a href="/profile/<%= friend.username %>"
+                     class="nav-link m-0 p-0 text-dark"><%= friend.username %></a></h2>
+               <p>
+                  <span><a href="#" onclick="removeFriend(event, <%= friend.id %>)">Remove friend</a></span>
+               <form id="remove_form_<%= friend.id %>" action="/remove_friend/<%= friend.username %>" method="post">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+               </form>
+               </p>
+            </div>
+            <hr class="m-0" />
+         </div>
+         <% }) %>
+         <% } %>
+      </div>
+      <% } %>
+   </div>
+</div>
+
+<script>
+   function addFriend(event) {
+      event.preventDefault();
+      document.getElementById("add_form").submit();
+   }
+   function removeFriend(event, id) {
+      event.preventDefault();
+      document.getElementById("remove_form_" + id).submit();
+   }
+</script>

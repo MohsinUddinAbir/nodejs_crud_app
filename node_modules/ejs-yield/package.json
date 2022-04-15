@@ -1,0 +1,24 @@
+{
+  "name": "ejs-yield",
+  "version": "1.0.0",
+  "description": "ExpressJS Middleware - EJS layout",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HariantoAtWork/ejs-yield.git"
+  },
+  "keywords": [
+    "EJS",
+    "expressjs",
+    "middleware"
+  ],
+  "author": "Harianto van Insulinde",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HariantoAtWork/ejs-yield/issues"
+  },
+  "homepage": "https://github.com/HariantoAtWork/ejs-yield#readme"
+}
