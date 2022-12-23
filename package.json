@@ -19,7 +19,7 @@
       "ejs-yield": "^1.0.0",
       "express": "^4.17.3",
       "express-session": "^1.17.2",
-      "jsonwebtoken": "^8.5.1",
+      "jsonwebtoken": "^9.0.0",
       "moment": "^2.29.2",
       "morgan": "^1.10.0",
       "multer": "^1.4.4",
